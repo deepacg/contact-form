@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container pt-4">
+        <div class="row" >
+          <div class="column">
+          
+            <h2 class="text-center">Contact form</h2>           
+            <form id="submit-form" action="" class='p-4'>
+              <!-- <form id="gform" method="POST" action='https://script.google.com/macros/s/AKfycbxiSS3Tm5y71_vvsWVVlY6GRxweXxWGs9daXHsdew/exec'> -->
+                  <label>Name</label><br>
+                  <input style='width: 500px' type="text" id="name" name='name' placeholder="Enter name"><br>
+                  <label>Mobile number</label><br>
+                  <input style='width: 500px' type="tel" id="mobile" name='mobile'  placeholder="Enter mobile"><br>
+                  <label>Email address</label><br>
+                  <input style='width: 500px' type="email"  id="email" name='email' placeholder="Enter email"><br>
+                  <label>Place</label><br>
+                  <input style='width: 500px' type="text" id="place" name='place' placeholder="Enter location"><br>
+                <label>Message</label><br>
+                <textarea style='width: 500px' id='message' name='message' placeholder="Enter your message.."></textarea><br>
+                <input type="submit"  value="Submit">
+            </form>
+          </div>
+          </div>
+        </div>
+
+  <!-- jQuery, Popper, Bootstrap, Fontawesome -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> -->
+
+<script>
+
+  //  const scriptURL = 'https://script.google.com/macros/s/AKfycbxiSS3Tm5y71_vvsWVVlY6GRxweXxWGs9daXHsdew/exec'
+  //           const form = document.forms['google-sheet']
+          
+  //           form.addEventListener('submit', e => {
+  //             e.preventDefault()
+  //             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  //               .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+  //               .catch(error => console.error('Error!', error.message))
+  //           })
+
+    $("#submit-form").submit((e) => {
+      e.preventDefault()
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxiSS3Tm5y71_vvsWVVlY6GRxweXxWGs9daXHsdew/exec",
+        data: $("#submit-form").serialize(),
+        method: "post",
+        success: function (response) {
+          alert("Form submitted successfully")
+          window.location.reload()
+        },
+        error: function (err) {
+          alert("Something Error")
+
+        }
+      })
+    })
+</script>
+          
+</body>
+</html>
